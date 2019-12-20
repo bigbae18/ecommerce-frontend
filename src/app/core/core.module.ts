@@ -6,6 +6,9 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CommerceModule } from '../features/commerce/commerce.module';
 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatCardModule} from '@angular/material/card';
+
 
 
 
@@ -14,7 +17,10 @@ import { CommerceModule } from '../features/commerce/commerce.module';
   imports: [
     CommonModule,
     RouterModule,
-    CommerceModule
+    CommerceModule,
+    MatToolbarModule,
+    MatCardModule
+    
   ],
   exports: [HeaderComponent, MainComponent, FooterComponent]
 })
