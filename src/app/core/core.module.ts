@@ -8,8 +8,8 @@ import { CommerceModule } from '../features/commerce/commerce.module';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatCardModule} from '@angular/material/card';
-
-
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { MatCardModule} from '@angular/material/card';
     RouterModule,
     CommerceModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
     
   ],
   exports: [HeaderComponent, MainComponent, FooterComponent]

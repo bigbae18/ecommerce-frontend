@@ -1,90 +1,90 @@
 [
    {
        "id":1,
-       "nombre":"camiseta",
+       "nombre":"camiseta 01",
        "sku":"123456789A",
        "precio":12.23,
-       "imagen":"assets/img-productos/cam1.jpg",
+       "imagen":"cam1.jpg",
        "stock" :100
 
    },
    {
     "id":2,
-    "nombre":"camiseta",
+    "nombre":"camiseta 02",
     "sku":"123456789B",
     "precio":10.13,
-    "imagen":"assets/img-productos/cam2.jpg",
+    "imagen":"cam2.jpg",
     "stock" :100
 
 },{
     "id":3,
-    "nombre":"camiseta",
+    "nombre":"camiseta 03",
     "sku":"123456789C",
     "precio":12.23,
-    "imagen":"assets/img-productos/cam3.jpg",
+    "imagen":"cam3.jpg",
     "stock" :100
 
 },
 {
     "id":4,
-    "nombre":"camiseta",
+    "nombre":"camiseta 04",
     "sku":"123456789D",
     "precio":13.34,
-    "imagen":"assets/img-productos/cam4.jpg",
+    "imagen":"cam4.jpg",
     "stock" :100
 
 },
 {
     "id":5,
-    "nombre":"camiseta",
+    "nombre":"camiseta 05",
     "sku":"123456789E",
     "precio":14.30,
-    "imagen":"assets/img-productos/cam5.jpg",
+    "imagen":"cam5.jpg",
     "stock" :100
 
 },
 {
     "id":6,
-    "nombre":"camiseta",
+    "nombre":"camiseta 06",
     "sku":"123456789F",
     "precio":22.30,
-    "imagen":"assets/img-productos/cam6.jpg",
+    "imagen":"cam6.jpg",
     "stock" :100
 
 },
 {
     "id":7,
-    "nombre":"camiseta",
+    "nombre":"camiseta 07",
     "sku":"123456789G",
     "precio":10.13,
-    "imagen":"assets/img-productos/cam7.jpg",
+    "imagen":"cam7.jpg",
     "stock" :100
 
 },
 {
     "id":8,
-    "nombre":"camiseta",
+    "nombre":"camiseta 08",
     "sku":"123456789H",
     "precio":14.13,
-    "imagen":"assets/img-productos/cam8.jpg",
+    "imagen":"cam8.jpg",
     "stock" :100
 
 },
 {
     "id":9,
-    "nombre":"camiseta",
+    "nombre":"camiseta 09",
     "sku":"123456789I",
     "precio":22.22,
-    "imagen":"assets/img-productos/cam9.jpg",
+    "imagen":"cam9.jpg",
     "stock" :100
 
 },
 {
     "id":10,
-    "nombre":"camiseta",
+    "nombre":"camiseta 10",
     "sku":"123456789J",
     "precio":17.00,
-    "imagen":"assets/img-productos/cam10.jpg",
+    "imagen":"cam10.jpg",
     "stock" :100
 
 }
