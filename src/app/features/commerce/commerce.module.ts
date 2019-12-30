@@ -9,9 +9,12 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
+import { ProductDetalleComponent } from './product-detalle/product-detalle.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 @NgModule({
-  declarations: [IndexComponent, CommerceComponent],
+  declarations: [IndexComponent, CommerceComponent, ProductDetalleComponent, CustomerFormComponent, ThankYouComponent],
   imports: [
     CommonModule,
     CommerceRoutingModule,
