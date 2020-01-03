@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './index/index.component';
 import { ProductDetalleComponent } from './product-detalle/product-detalle.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 
 const routes: Routes = [
@@ -11,18 +13,18 @@ const routes: Routes = [
     
   },
   {
-    path: 'product/{id}',
+    path: 'product/:id',
     component: ProductDetalleComponent
     
   },
   {
     path: 'customer',
-    component: ProductDetalleComponent
+    component: CustomerFormComponent
     
   },
   {
     path: 'thanksyou',
-    component: ProductDetalleComponent
+    component: ThankYouComponent
     
   }
 

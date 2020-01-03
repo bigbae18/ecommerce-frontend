@@ -1,1 +1,25 @@
-<p>customer-form works!</p>
+<p>CUSTOMER INFORMATION</p>
+
+<div class="form-container">
+    <mat-form-field>
+        <input matInput placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Last Name">
+      </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="email">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="DNI">
+    </mat-form-field>
+    <mat-card-actions> 
+        <!-- <button mat-button>CANCELAR</button> 
+        <button  mat-button> COMPRAR </button>  -->
+        <div class="example-button-row">
+          <a mat-stroked-button [routerLink]="['/product/:id']">Atras</a>
+          <a mat-stroked-button [routerLink]="['/thanksyou']">Finalizar</a>
+        </div>  
+      </mat-card-actions> 
+
+  </div>

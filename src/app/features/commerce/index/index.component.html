@@ -11,7 +11,7 @@
       
       <mat-card-actions>
         <div class="example-button-row">
-          <a mat-stroked-button routerLink="/product/{{product.id}}">Ver +</a>
+          <a mat-stroked-button [routerLink]="['/product', product.id]">Ver +</a>
         </div>  
       </mat-card-actions>
 

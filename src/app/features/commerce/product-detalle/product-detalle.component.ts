@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import listProducts from 'src/assets/json/products.json';
+
 
 @Component({
   selector: 'app-product-detalle',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-detalle.component.css']
 })
 export class ProductDetalleComponent implements OnInit {
-
+  Products: any = listProducts;
   constructor() { }
-
+  
   ngOnInit() {
+  
   }
 
 }
