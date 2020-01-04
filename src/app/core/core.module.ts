@@ -5,7 +5,6 @@ import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CommerceModule } from '../features/commerce/commerce.module';
-
 import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
@@ -14,9 +13,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     CommonModule,
     RouterModule,
     CommerceModule,
-    MatToolbarModule
-    
-    
+    MatToolbarModule 
   ],
   exports: [HeaderComponent, MainComponent, FooterComponent]
 })

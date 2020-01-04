@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import listProducts from 'src/assets/json/products.json';
+import { CommerceService } from '../commerce.service';
 
 @Component({
   selector: 'app-index',
@@ -8,9 +9,9 @@ import listProducts from 'src/assets/json/products.json';
 })
 export class IndexComponent implements OnInit {
   Products: any = listProducts;
-  constructor() { }
+  constructor(private commerceService: CommerceService) { }
 
   ngOnInit() {
   }
-
+  
 }
