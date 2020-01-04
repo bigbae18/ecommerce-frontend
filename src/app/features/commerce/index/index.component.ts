@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import listProducts from 'src/assets/json/products.json';
 import { CommerceService } from '../commerce.service';
+import { ProductService } from '../product.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { IProduct } from '../../models/product.model';
 
 @Component({
   selector: 'app-index',
@@ -8,10 +11,22 @@ import { CommerceService } from '../commerce.service';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-  Products: any = listProducts;
-  constructor(private commerceService: CommerceService) { }
+
+  products: IProduct[];
+  error = '';
+
+  constructor(private productService: ProductService,
+    private commerceService:CommerceService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.getProducts();
+  }
+
+  getProducts() {
+    return this.productService.getProducts().subscribe({
+      next: products => this.products = products,
+      error: error => this.error = error
+    })
   }
   
 }

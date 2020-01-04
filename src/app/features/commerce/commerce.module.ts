@@ -13,6 +13,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { ProductDetalleComponent } from './product-detalle/product-detalle.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { ProductService } from './product.service';
+import { CommerceService } from './commerce.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [IndexComponent, CommerceComponent, ProductDetalleComponent, CustomerFormComponent, ThankYouComponent],
@@ -25,6 +28,11 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule
+  ],
+  providers: [
+    ProductService,
+    CommerceService
   ],
   exports:[
     CommerceComponent

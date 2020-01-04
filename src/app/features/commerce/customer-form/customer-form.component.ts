@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CommerceService } from '../commerce.service';
+import { ICustomer } from '../../models/customer.model';
 
 @Component({
   selector: 'app-customer-form',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerFormComponent implements OnInit {
 
-  constructor() { }
+  customer: ICustomer;
+
+  constructor(private commerceService: CommerceService) { }
 
   ngOnInit() {
-  }
+    console.log(this.commerceService.getOrderLines);
+  } 
 
+  submitForm() {
+    this.customer.documentation;
+  }
 }

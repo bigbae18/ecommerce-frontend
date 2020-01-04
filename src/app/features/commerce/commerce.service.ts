@@ -8,10 +8,9 @@ import { IOrderLine } from '../models/orderline.model';
   providedIn: 'root'
 })
 export class CommerceService {
-
+  public orderLine: IOrderLine;
   public order: Order;
   public customer: ICustomer;
-  public orderLine: IOrderLine;
 
   constructor() {
     this.order = new Order();
@@ -48,20 +47,25 @@ export class CommerceService {
   //   }
   // }
 
-  addOrderLine(product: IProduct, quantity: number) {
-    this.orderLine.productId = product.id;
-    if (product.stock >= quantity) {
+  async addOrderLine(product: IProduct, quantity: number) {
+    console.log('On addOrderLine');
+    // if (quantity > 0) {
+    console.log('if product stock');
+    if(product.stock > quantity) {
+      this.orderLine.productId = product.id;
       this.orderLine.quantity = quantity;
-      this.calculatePrize(product.price, quantity);
-    } else {
-      return 'Not that much stock dude'
-    }
+      console.log('all added');
+      // } else {
+      //   return 'Not that much stock dude'
+      // }
 
-    this.addOrderLineToOrder(this.orderLine);
+      this.addOrderLineToOrder(this.orderLine);
+      console.log(this.orderLine);
+    };
   }
   private calculatePrize(price: number, quantity: number) {
     let totalPrize = price * quantity;
-    this.orderLine.finalPrize = totalPrize;
+    return totalPrize;
   }
   private addOrderLineToOrder(orderLine: IOrderLine) {
     this.order.orderLines.push(orderLine);

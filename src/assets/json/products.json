@@ -1,90 +1,80 @@
 [
    {
        "id":1,
-       "nombre":"camiseta 01",
-       "sku":"123456789A",
-       "precio":12.23,
-       "imagen":"cam1.jpg",
+       "name":"camiseta 01",
+       "price":12.23,
+       "imageUrl":"cam1.jpg",
        "stock" :100
 
    },
    {
     "id":2,
-    "nombre":"camiseta 02",
-    "sku":"123456789B",
-    "precio":10.13,
-    "imagen":"cam2.jpg",
+    "name":"camiseta 02",
+    "price":10.13,
+    "imageUrl":"cam2.jpg",
     "stock" :100
 
 },{
     "id":3,
-    "nombre":"camiseta 03",
-    "sku":"123456789C",
-    "precio":12.23,
-    "imagen":"cam3.jpg",
+    "name":"camiseta 03",
+    "price":12.23,
+    "imageUrl":"cam3.jpg",
     "stock" :100
 
 },
 {
     "id":4,
-    "nombre":"camiseta 04",
-    "sku":"123456789D",
-    "precio":13.34,
-    "imagen":"cam4.jpg",
+    "name":"camiseta 04",
+    "price":13.34,
+    "imageUrl":"cam4.jpg",
     "stock" :100
 
 },
 {
     "id":5,
-    "nombre":"camiseta 05",
-    "sku":"123456789E",
-    "precio":14.30,
-    "imagen":"cam5.jpg",
+    "name":"camiseta 05",
+    "price":14.30,
+    "imageUrl":"cam5.jpg",
     "stock" :100
 
 },
 {
     "id":6,
-    "nombre":"camiseta 06",
-    "sku":"123456789F",
-    "precio":22.30,
-    "imagen":"cam6.jpg",
+    "name":"camiseta 06",
+    "price":22.30,
+    "imageUrl":"cam6.jpg",
     "stock" :100
 
 },
 {
     "id":7,
-    "nombre":"camiseta 07",
-    "sku":"123456789G",
-    "precio":10.13,
-    "imagen":"cam7.jpg",
+    "name":"camiseta 07",
+    "price":10.13,
+    "imageUrl":"cam7.jpg",
     "stock" :100
 
 },
 {
     "id":8,
-    "nombre":"camiseta 08",
-    "sku":"123456789H",
-    "precio":14.13,
-    "imagen":"cam8.jpg",
+    "name":"camiseta 08",
+    "price":14.13,
+    "imageUrl":"cam8.jpg",
     "stock" :100
 
 },
 {
     "id":9,
-    "nombre":"camiseta 09",
-    "sku":"123456789I",
-    "precio":22.22,
-    "imagen":"cam9.jpg",
+    "name":"camiseta 09",
+    "price":22.22,
+    "imageUrl":"cam9.jpg",
     "stock" :100
 
 },
 {
     "id":10,
-    "nombre":"camiseta 10",
-    "sku":"123456789J",
-    "precio":17.00,
-    "imagen":"cam10.jpg",
+    "name":"camiseta 10",
+    "price":17.00,
+    "imageUrl":"cam10.jpg",
     "stock" :100
 
 }
