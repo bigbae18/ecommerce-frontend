@@ -4,6 +4,7 @@ import { IProduct } from '../../models/product.model';
 import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommerceService } from '../commerce.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,9 +13,12 @@ import { CommerceService } from '../commerce.service';
   styleUrls: ['./product-detalle.component.css']
 })
 export class ProductDetalleComponent implements OnInit {
-  product: IProduct;
-  error: '';
-  productToAdd: IProduct;
+  public product: IProduct;
+  public error: '';
+  public quantity = new FormGroup({
+    quantity: new FormControl(1, [Validators.min(1), Validators.required])
+  });
+
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router, private commerceService: CommerceService) { }
   
   ngOnInit() {
@@ -24,13 +28,10 @@ export class ProductDetalleComponent implements OnInit {
       this.getProduct(id);
     }
   }
-  buyProduct(id: number) {
-    console.log('inside buyproduct');
-    this.productService.getProduct(id).subscribe({
-      next: product => this.productToAdd = product,
-      error: error => this.error = error,
-      complete: () => this.commerceService.addOrderLine(this.productToAdd, 3)
-    });
+  async attach(product: IProduct) {
+    let quantity = Number(this.quantity.get('quantity').value);
+    await this.commerceService.addOrderLine(product, quantity);
+    await this.router.navigate(["/customer"]);
   }
 
   getProduct(id: number) {

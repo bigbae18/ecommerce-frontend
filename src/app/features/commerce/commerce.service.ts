@@ -14,6 +14,18 @@ export class CommerceService {
 
   constructor() {
     this.order = new Order();
+    this.orderLine = {
+      productId: 0,
+      quantity: 0
+    };
+    this.customer = {
+      name: '',
+      surname: '',
+      email: '',
+      documentation: '',
+      phone: 0,
+      shippingAddress: ''
+    };
   }
 
   getOrder(): Order {
@@ -22,7 +34,7 @@ export class CommerceService {
 
   // CUSTOMER
   
-  addCustomer(customer: ICustomer) {
+  async addCustomer(customer: ICustomer) {
     this.customer.name = customer.name;
     this.customer.surname = customer.surname;
     this.customer.email = customer.email;
@@ -30,9 +42,10 @@ export class CommerceService {
     this.customer.phone = customer.phone;
     this.customer.shippingAddress = customer.shippingAddress;
 
-    this.addCustomerToOrder(this.customer);
+    await console.log('all done');
+    await this.addCustomerToOrder(this.customer);
   }
-  private addCustomerToOrder(customer: ICustomer) {
+  private async addCustomerToOrder(customer: ICustomer) {
     this.order.customer = customer;
   }
   getCustomer() {
@@ -51,7 +64,7 @@ export class CommerceService {
     console.log('On addOrderLine');
     // if (quantity > 0) {
     console.log('if product stock');
-    if(product.stock > quantity) {
+    if(product.stock >= quantity) {
       this.orderLine.productId = product.id;
       this.orderLine.quantity = quantity;
       console.log('all added');
@@ -63,7 +76,7 @@ export class CommerceService {
       console.log(this.orderLine);
     };
   }
-  private calculatePrize(price: number, quantity: number) {
+  private calculatePrize(price: number, quantity: number): number {
     let totalPrize = price * quantity;
     return totalPrize;
   }

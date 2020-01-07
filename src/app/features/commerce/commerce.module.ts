@@ -16,6 +16,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ProductService } from './product.service';
 import { CommerceService } from './commerce.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [IndexComponent, CommerceComponent, ProductDetalleComponent, CustomerFormComponent, ThankYouComponent],
@@ -28,7 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductService,

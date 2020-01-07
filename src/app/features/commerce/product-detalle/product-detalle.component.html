@@ -10,11 +10,14 @@
       <h3>precio : {{product.price}} €</h3>
   </mat-card-content> 
   <mat-card-actions> 
+    <form [formGroup]="quantity">
+      <input formControlName="quantity" type="number" value="1" maxlength="{{ product.stock }}">
+    </form>
     <!-- <button mat-button>CANCELAR</button> 
     <button  mat-button> COMPRAR </button>  -->
     <div class="example-button-row">
       <a mat-stroked-button [routerLink]="['/']">Volver</a>
-      <a mat-stroked-button (click)="buyProduct(product.id)" [routerLink]="['/customer']">Comprar</a>
+      <a mat-stroked-button (click)="attach(product)">Comprar</a>
     </div>  
   </mat-card-actions> 
 </mat-card>
