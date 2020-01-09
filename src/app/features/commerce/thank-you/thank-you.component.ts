@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import listProducts from 'src/assets/json/products.json';
 import { CommerceService } from '../commerce.service';
+import { Order } from '../../models/order.class';
+import { Observable } from 'rxjs';
+import { IProduct } from '../../models/product.model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-thank-you',
@@ -8,13 +11,21 @@ import { CommerceService } from '../commerce.service';
   styleUrls: ['./thank-you.component.css']
 })
 export class ThankYouComponent implements OnInit {
-  Products: any = listProducts;
-  constructor(private commerceService: CommerceService) { }
+
+  public order: Order;
+  public order$: Observable<Order>;
+  public product: IProduct;
+
+  constructor(private commerceService: CommerceService, private productService: ProductService) { }
 
   ngOnInit() {
-    console.log(this.commerceService.getCustomer());
-    console.log(this.commerceService.getOrderLines());
-    console.log(this.commerceService.getOrder());
+    this.order$ = this.commerceService.getOrder$();
+    this.order$.subscribe({
+      next: order => this.order = order
+    });
+    this.productService.getProduct(this.order.orderLines[0].productId).subscribe({
+      next: prod => this.product = prod
+    });
   }
 
 }

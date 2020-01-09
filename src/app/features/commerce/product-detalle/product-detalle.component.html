@@ -7,8 +7,9 @@
   </mat-card-header>
   <img mat-card-image src="/assets/img-productos/{{product.imageUrl}}" alt="{{product.name}}">
   <mat-card-content> 
-      <h3>precio : {{product.price}} €</h3>
+      <h3>precio : {{ (product.price * this.quantity.get('quantity').value).toFixed(2) }} €</h3>
   </mat-card-content> 
+  <!--{{ parseFloat(product.price * this.quantity.get('quantity').value).toFixed(2) }}-->
   <mat-card-actions> 
     <form [formGroup]="quantity">
       <input formControlName="quantity" type="number" value="1" maxlength="{{ product.stock }}">

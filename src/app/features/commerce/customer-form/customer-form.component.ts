@@ -3,6 +3,8 @@ import { CommerceService } from '../commerce.service';
 import { ICustomer } from '../../models/customer.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Order } from '../../models/order.class';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-customer-form',
@@ -11,6 +13,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CustomerFormComponent implements OnInit {
 
+  public order: Order;
+  public order$: Observable<Order>;
+  public error: string = '';
   public customer: ICustomer;
   public customerForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -24,25 +29,29 @@ export class CustomerFormComponent implements OnInit {
   constructor(private commerceService: CommerceService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.commerceService.getOrderLines());
+    this.order$ = this.commerceService.getOrder$();
+    this.order$.subscribe({
+      next: order => this.order = order
+    })
+    console.log(this.order$, this.order);
   }
 
-  async submit() {
+
+
+  submit() {
     if (this.customerForm.valid) {
-      this.customer.name = await this.customerForm.get('name').value;
-      this.customer.surname = await this.customerForm.get('surname').value;
-      this.customer.email = await this.customerForm.get('email').value;
-      this.customer.documentation = await this.customerForm.get('documentation').value;
-      this.customer.shippingAddress = await this.customerForm.get('shippingAddress').value;
-      this.customer.phone = await this.customerForm.get('phone').value;
-      await this.attach(this.customer);
+      this.customer = {
+        name: this.customerForm.get('name').value,
+        surname: this.customerForm.get('surname').value,
+        email: this.customerForm.get('email').value,
+        documentation: this.customerForm.get('documentation').value,
+        shippingAddress: this.customerForm.get('shippingAddress').value,
+        phone: this.customerForm.get('phone').value
+      }
+      this.commerceService.addCustomer$(this.customer);
+      this.router.navigate(['/thanksyou']);
     } else {
       this.router.navigate(['/customer', this.router.getCurrentNavigation()]);
     }
-  }
-
-  private async attach(customer: ICustomer) {
-    await this.commerceService.addCustomer(customer);
-    await this.router.navigate(['/thanksyou']);
   }
 }

@@ -1,18 +1,18 @@
 <h2>GRACIAS POR SU COMPRA</h2>
 
-<mat-card class="example-card" *ngFor="let product of Products.slice(0, 1)">
+<mat-card class="example-card">
     <mat-card-header>
       
       <mat-card-title>DETALLE DE SU COMPRA</mat-card-title>
       
     </mat-card-header>
-    <img mat-card-image src="/assets/img-productos/{{product.imagen}}" alt="{{product.nombre}}">
+    <img mat-card-image src="/assets/img-productos/{{product.imageUrl}}" alt="{{product.name}}">
     <mat-card-content>
       <p>
        PRODUCTO ID: {{product.id}}
       </p>
       <p>  
-       PRECIO: {{product.precio}} 
+       PRECIO: {{ order.totalPrice }} 
 
       </p>
     </mat-card-content>

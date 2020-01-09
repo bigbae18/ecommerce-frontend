@@ -1,8 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ErrorHandler } from '@angular/core';
 import { IProduct } from '../models/product.model';
 import { Order } from '../models/order.class';
 import { ICustomer } from '../models/customer.model';
 import { IOrderLine } from '../models/orderline.model';
+import { Observable, throwError, Subject, onErrorResumeNext, BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,82 +13,49 @@ import { IOrderLine } from '../models/orderline.model';
 export class CommerceService {
   public orderLine: IOrderLine;
   public order: Order;
+  public order$: BehaviorSubject<Order>;
   public customer: ICustomer;
+  public postUrl: string;
 
-  constructor() {
+  constructor(private http: HttpClient, private router: Router) {
     this.order = new Order();
-    this.orderLine = {
-      productId: 0,
-      quantity: 0
-    };
-    this.customer = {
-      name: '',
-      surname: '',
-      email: '',
-      documentation: '',
-      phone: 0,
-      shippingAddress: ''
-    };
+    this.order$ = new BehaviorSubject<Order>(this.order);   
+    
   }
 
-  getOrder(): Order {
-    return this.order;
+  getOrder$(): Observable<Order> {
+    return this.order$.asObservable();
   }
 
   // CUSTOMER
   
-  async addCustomer(customer: ICustomer) {
-    this.customer.name = customer.name;
-    this.customer.surname = customer.surname;
-    this.customer.email = customer.email;
-    this.customer.documentation = customer.documentation;
-    this.customer.phone = customer.phone;
-    this.customer.shippingAddress = customer.shippingAddress;
-
-    await console.log('all done');
-    await this.addCustomerToOrder(this.customer);
-  }
-  private async addCustomerToOrder(customer: ICustomer) {
+  addCustomer$(customer: ICustomer) {
     this.order.customer = customer;
+    this.order$.next(this.order);
   }
-  getCustomer() {
-    return this.customer
-  }
-  // ORDERLINES
 
-  // newOrderLine(product: IProduct): OrderLineClass {
-  //   return {
-  //     product_id: product.id,
-  //     quantity: 0
-  //   }
-  // }
+  addOrderLine$(product: IProduct, quantity:number) {
+    if (product.stock >= quantity) {
 
-  async addOrderLine(product: IProduct, quantity: number) {
-    console.log('On addOrderLine');
-    // if (quantity > 0) {
-    console.log('if product stock');
-    if(product.stock >= quantity) {
-      this.orderLine.productId = product.id;
-      this.orderLine.quantity = quantity;
-      console.log('all added');
-      // } else {
-      //   return 'Not that much stock dude'
-      // }
+      this.order.orderLines.push({
+          productId: product.id,
+          quantity: quantity
+        });
 
-      this.addOrderLineToOrder(this.orderLine);
-      console.log(this.orderLine);
-    };
+      this.order$.next(this.order);
+
+      let finalPrice = this.calculatePrize(product.price, quantity);
+
+      this.order.totalPrice = finalPrice;
+
+      this.order$.next(this.order);
+    }  else {
+      throwError('Not enough stock of that product!');
+    }
   }
   private calculatePrize(price: number, quantity: number): number {
     let totalPrize = price * quantity;
     return totalPrize;
-  }
-  private addOrderLineToOrder(orderLine: IOrderLine) {
-    this.order.orderLines.push(orderLine);
-  }
-
-  getOrderLines() {
-    return this.order.orderLines;
   }
   
 }
